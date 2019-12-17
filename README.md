@@ -63,7 +63,7 @@ This project is mainly focused on number **3. Decide**. We implemented GMT* moti
 
 ### Parrallel Motion Planning on the GPU:
 
-Motion planning algorithms are meant to help an autonomous robot to find a sequence of valid configurations that moves it from the source to the desired destination. Due to the sequential nature of the task, many different sequential algorithms can successfully achieve this in various scenarios. One example of such an algorithm is [FMT*(Fast Marching Tree)](https://arxiv.org/pdf/1306.3532.pdf). Although FMT* works great for high dimensional state space, due to its sequential nature it is not able to be run on the GPU. For the algorithm to be able to be run on the GPU, we need to alter the algorithm to be able to run in parallel at some abstract level. This where [GMT* (Group Marching Tree)](https://arxiv.org/abs/1705.02403) paper comes into play. Brian Itcher et al proposed a variation to the FMT* that would allow it to run on the GPU. We implemented the algorithm on the GPU and tested our result on CARLA driving simulator. We will discuss the algorithm in more detail later in the read me!
+Motion planning algorithms are meant to help an autonomous robot to find a sequence of valid configurations that moves it from the source to the desired destination. Due to the sequential nature of the task, many different sequential algorithms can successfully achieve this in various scenarios. One example of such an algorithm is [FMT*(Fast Marching Tree)](https://arxiv.org/pdf/1306.3532.pdf). Although FMT* works great for high dimensional state space, due to its sequential nature it is not able to be run on the GPU. For the algorithm to be able to be run on the GPU, we need to alter the algorithm to be able to run in parallel at some abstract level. This where [GMT* (Group Marching Tree)](https://arxiv.org/abs/1705.02403) paper comes into play. Brian Ichter et al proposed a variation to the FMT* that would allow it to run on the GPU. We implemented the algorithm on the GPU and tested our result on CARLA driving simulator. We will discuss the algorithm in more detail later in the read me!
 
 ### CARLA:
 
@@ -96,7 +96,7 @@ To **run our code** follow the following instructions (These instructions are fo
 3. Go to where you unzipped CARLA and run the following command in windows cmd (This initializes CARLA server that you can then connect to using python):
 
   ```
-  CarlaUE4.exe -carla-server -benchmark -fps=15 -windowed -ResX=800 -ResY=600  
+  CarlaUE4.exe -carla-server -benchmark -fps=20 -windowed -ResX=800 -ResY=600  
   ```
   
 4. Clone this repository into your desired path
@@ -155,7 +155,7 @@ The open set is every node that is a leaf in the tree, the wavefront set are the
 
 In each iteration the neighbors of every node in the wavefront are added to the unexplored neighbor set if it has not been seen. The unexplored neighbor set is then connected to the nodes in the open set where the most locally optimal connection is kept and indicated in the parent buffer and the accumulated cost of the unexplored neighbor updated to be the parent node plus the cost of connection. The nodes are taken off the unexplored neighbor set and added to the open set. This is repeated until the goal ends up in the wavefront.
  
-![](images/gmtExample1.gif)
+![](images/gmtExample2.gif)
 
 
 ## Implementation:

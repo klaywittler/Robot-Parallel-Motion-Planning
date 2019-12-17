@@ -65,7 +65,7 @@ def game_loop(options_dict):
         # spawn vehicle
         vehicle_bp = 'model3'
         vehicle_transform = spawn_points[options_dict['spawn_point_indices'][0]]
-        # vehicle_transform.location.x -= 6
+        vehicle_transform.location.x -= 10
         vehicle = Car(vehicle_bp, vehicle_transform, world)
 
         # # add obstacles and get sample nodes
